@@ -1,29 +1,143 @@
 body {
-    margin: 20px;
+  margin: 0;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  margin: 10px 0px;
+  background-image: url(images/header-plz.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  color: black;
 }
 
+main {
+  display: flex;
+  justify-content: flex;
+  justify-content: space-between;
+}
 
 .logo img {
-    height: 100px;
+  height: 100px;
 }
 
 .total-box {
-    font-size: 1.5em;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+
+.graph {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.7em;
+  top: 130px;
+  left: 35%;
+  width: 350px;
+  height: 400px;
+  padding-top: 15px;
+  background-color: lightblue;
+  border: 1px solid gray;
 }
 
 .graph div {
+  position: absolute;
+  top: 0;
+}
 
+.total-graph {
+  position: absolute;
+  right: 50px;
+  font-weight: 700;
+  color: rgb(75, 82, 90);
+}
+
+.spent-graph {
+  position: absolute;
+  left: 50px;
+  font-weight: 700;
+  color: rgb(75, 82, 90);
 }
 
 .button-box {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    right: 25px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 5px;
+  top: 200px;
+}
+
+.broke-bitch {
+  width: 200px;
+  height: 400px;
+  flex-wrap: wrap;
+  border: 1px solid gray;
+  font-size: 1.7em;
+  text-align: center;
+  padding-top: 25px;
+  margin-left: 5px;
+  background-color: lightblue;
+}
+
+.button-box button {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.form-box {
+  align-items: center;
+  height: 500px;
+  width: 75%;
+  flex-direction: column;
+  color: white;
+  display: none;
+  background-image: url(images/judging-by-appearances-4.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.pop-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  position: absolute;
+  top: 25%;
+}
+
+.form-box h2,
+.form-box label,
+.form-box input {
+  margin: 10px;
+}
+
+footer button {
+  position: fixed;
+  bottom: 0;
+  padding: 10px 20px;
+  width: 100%;
+  margin: 0px;
+}
+
+.graph-border-div {
+  position: absolute;
+  width: 350px;
+  border-bottom: 1px solid grey;
+  margin-top: 35px;
+}
+
+.hidden {
+  display: none;
+}
+
+.button-box button:hover {
+  background-color: lightblue;
+  border-color: lightskyblue;
+  padding: 15px 10px;
+  transition: 0.5s;
 }

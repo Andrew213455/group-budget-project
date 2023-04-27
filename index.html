@@ -20,16 +20,12 @@
     </header>
     <main>
       <section class="broke-bitch">
-        You have a full budget. spend like the wind.
+        You have a full budget! Spend like the wind.
       </section>
       <section class="graph">
-        <div>
-          <div>Food</div>
-          <div>Entertainment</div>
-          <div>Clothing</div>
-          <div>Bills</div>
-        </div>
-        <div>Spent</div>
+        <div class="graph-border-div"></div>
+        <div class="total-graph">Total</div>
+        <div class="spent-graph">Spent</div>
       </section>
       <section class="button-box">
         <button class="food">Food</button>
@@ -37,8 +33,18 @@
         <button class="clothing">Clothing</button>
         <button class="bills">Bills</button>
       </section>
+      <section class="pop-up">
+        <form class="form-box">
+          <h2 class="foodOption"></h2>
+          <label for="number">How much did you spend this time..?</label>
+          <input type="number" id="number" />
+          <button class="submit-button">SUBMIT</button>
+        </form>
+      </section>
     </main>
-
+    <footer>
+      <button>RESET - NEW MONTH</button>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>
