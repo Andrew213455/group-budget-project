@@ -13,7 +13,7 @@
         <h1>Club Penguin Budgeting</h1>
         <div class="total-box">
           <div class="spent">Spent: 0</div>
-          <div class="total">Total: 1000</div>
+          <div class="total">Total: 0</div>
         </div>
       </header>
       <main>
@@ -37,11 +37,21 @@
         <button class="reset">Reset - New Month</button>
       </footer>
 
+      <section class="start-pop-up">
+        <form class="form-box form-box-1">
+          <label for="name">Name</label>
+          <input type="text" id="name">
+          <label for="budget">needing money A LOT now!</label>
+          <input type="number" id="budget">
+          <button>Submit</button>
+        </form>
+      </section>
+
       <section class="pop-up">
-        <form class="form-box">
+        <form class="form-box form-box-2" >
           <h2 class="foodOption"></h2>
           <label for="number">How much did you spend this time..?</label>
-          <input type="number" id="number" />
+          <input type="number" id="spentValue" />
           <button class="submit-button">SUBMIT</button>
         </form>
       </section>

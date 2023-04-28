@@ -1,11 +1,13 @@
 body, header, main, section, h1 {
   margin: 0;
+  padding: 0;
 }
 
 header {
   display: flex;
   position: fixed;
   width: 100%;
+  height: 100px;
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid black;
@@ -14,7 +16,7 @@ header {
   background-repeat: no-repeat;
   box-sizing: border-box;
   color: black;
-  padding: 10px 10px 0 10px;
+  /* padding: 10px 10px 0 10px; */
 }
 
 h1 {
@@ -23,7 +25,7 @@ h1 {
 }
 
 .logo {
-  height: 100px;
+  height: 80px;
 }
 
 .total-box {
@@ -33,7 +35,7 @@ h1 {
 
 
 main {
-  display:flex;
+  display:none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -64,6 +66,9 @@ main {
 
 .border {
   display: flex;
+  justify-content: space-around;
+  align-items:flex-end;
+  width: 80%;
   border-top: 1px solid black;
 }
 
@@ -81,7 +86,7 @@ main {
 
 .button-container button {
   height: 50%;;
-  width: 20%;
+  width: 100px;
   border-radius: 15px;
   
 }
@@ -135,7 +140,8 @@ footer button:hover {
   flex-direction: column;
   width: 80%;
   align-items: center;
-  padding-left: 30px;
+  justify-content: center;
+  padding-left: 35px;
 }
 
 label {
@@ -152,6 +158,24 @@ label {
   padding: 15px 50px;
   transition: .5s;
   background-color: lightblue;
+}
+
+.start-pop-up {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30%;
+  margin: 0 auto;
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+  background-image: url(/images/starting-pop-up-budget.jpg);
+  background-size: cover;
+  color: white;
+  font-weight: 600;
+  text-align:center;
+  border-radius: 15px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -183,5 +207,31 @@ label {
 
   footer button:hover {
       width: 90%; 
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .button-container button {
+    font-size: 10px;
+    width: 100px;
+  }
+
+  header h1 {
+    font-size: 16px;
+  }
+
+  .total-box {
+    font-size: 14px;
+  }
+
+  .logo {
+    height: 50px;
   }
 }

@@ -12,28 +12,56 @@ const entertainmentButton = document.querySelector(".entertainment")
 const clothingButton = document.querySelector(".clothing");
 const billsButton = document.querySelector(".bills");
 const buttonBox= document.querySelector(".button-container");
-const popUpBox = document.querySelector(".form-box");
+const popUpBox = document.querySelector(".form-box-1");
 const messageBox = document.querySelector(".condescend-message");
 const graph = document.querySelector(".graph-container");
-const submitButton = document.querySelector(".submit-button");
+const expensesForm = document.querySelector(".form-box-2");
+const startingInfoForm = document.querySelector(".start-pop-up");
 const popUp = document.querySelector(".pop-up");
-const resetButton = document.querySelector(".reset")
-let total = 0;
+const resetButton = document.querySelector(".reset");
+const main = document.querySelector("main");
+const moneySpent = document.querySelector("#spentValue");
+const spentValue = document.querySelector(".spent");
+
+const headerTotal = document.querySelector(".total")
+const name = document.querySelector("#name");
+let initialMoney = document.querySelector("#budget");
+let totalSpent = 0;
+let runningTotal = 0;
+let initialMoneyValue = null;
+
+
+popUpBox.addEventListener("submit", (e) => {
+  e.preventDefault();
+  initialMoneyValue = initialMoney.value;
+  const nameValue = name.value;
+  startingInfoForm.style.display = "none";
+  main.style.display = "flex";
+  headerTotal.textContent = `total: $` + initialMoneyValue;
+})
 
 buttonBox.addEventListener ("click", (e) => {
-    buttonBox.style.display = "none";
-    messageBox.style.display = "none";
-    graph.style.display = "none";
+    main.style.display = "none";
     resetButton.style.display = "none";
     popUp.style.display = "flex";
 })
 
-submitButton.addEventListener("submit", (e) => {
+expensesForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    buttonBox.display = "flex";
-    messageBox.display = "flex";
-    graph.style.display = "flex";
+    console.log("i was not")
+    main.style.display = "flex";
     popUpBox.style.display = "none";
+    popUp.style.display = "none";
+    resetButton.style.display = "block";
+    
+    runningTotal = initialMoneyValue -= +moneySpent.value;
+    totalSpent += +moneySpent.value;
+    spentValue.textContent = `spent: $${totalSpent}`;
+    headerTotal.textContent = `total $${runningTotal}`
+
+    
+
+    
 
     //Form Submission TODO:
     // this is where the graph altering will being
@@ -46,3 +74,4 @@ submitButton.addEventListener("submit", (e) => {
 // Outside of submit button TODO:
 // start with only one alert asking monthly budget
 // that number entered will populate total amounts and main page will load
+
