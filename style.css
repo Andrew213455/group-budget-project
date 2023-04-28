@@ -1,27 +1,28 @@
-body {
+body, header, main, section, h1 {
   margin: 0;
 }
 
 header {
   display: flex;
-  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid black;
-  margin: 10px 0px;
-  background-image: url(images/header-plz.jpg);
+  background-image: url(images/header-background-snow.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   box-sizing: border-box;
   color: black;
+  padding: 10px 10px 0 10px;
 }
 
-main {
-  display: flex;
-  justify-content: flex;
-  justify-content: space-between;
+h1 {
+  width: 200px;
+  text-align: center;
 }
 
-.logo img {
+.logo {
   height: 100px;
 }
 
@@ -30,114 +31,157 @@ main {
   font-weight: 700;
 }
 
-.graph {
-  position: absolute;
-  display: flex;
-  justify-content: space-around;
-  font-size: 1.7em;
-  top: 130px;
-  left: 35%;
-  width: 350px;
-  height: 400px;
-  padding-top: 15px;
-  background-color: lightblue;
-  border: 1px solid gray;
-}
 
-.graph div {
-  position: absolute;
-  top: 0;
-}
-
-.total-graph {
-  position: absolute;
-  right: 50px;
-  font-weight: 700;
-  color: rgb(75, 82, 90);
-}
-
-.spent-graph {
-  position: absolute;
-  left: 50px;
-  font-weight: 700;
-  color: rgb(75, 82, 90);
-}
-
-.button-box {
-  display: flex;
+main {
+  display:flex;
   flex-direction: column;
-  position: absolute;
-  right: 5px;
-  top: 200px;
-}
-
-.broke-bitch {
-  width: 200px;
-  height: 400px;
-  flex-wrap: wrap;
-  border: 1px solid gray;
-  font-size: 1.7em;
-  text-align: center;
-  padding-top: 25px;
-  margin-left: 5px;
-  background-color: lightblue;
-}
-
-.button-box button {
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.form-box {
-  align-items: center;
-  height: 500px;
-  width: 75%;
-  flex-direction: column;
-  color: white;
-  display: none;
-  background-image: url(images/judging-by-appearances-4.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.pop-up {
-  display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
-  width: 100%;
-  position: absolute;
-  top: 25%;
+  
+}
+.box {
+  width: 80%;
+  height: 300px;
+  margin-bottom: 15px;
+  font-size: 1.75em;
 }
 
-.form-box h2,
-.form-box label,
-.form-box input {
-  margin: 10px;
+.condescend-message {
+  height: 10%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 0;
+  margin-top: 150px;
+}
+
+.graph-container {
+  border: black solid 1px;
+  height: 500px;
+  display: flex;
+  justify-content: space-around;
+  align-items:flex-end
+}
+
+.border {
+  display: flex;
+  border-top: 1px solid black;
+}
+
+.graph-container p {
+  padding: 0 40px;
+}
+
+.button-container {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button-container button {
+  height: 50%;;
+  width: 20%;
+  border-radius: 15px;
+  
+}
+
+.button-container button:hover {
+  height: 60px;
+  width: 120px;
+  background-color: lightblue;
+  transition: .5s;
+}
+
+footer {
+  margin-top: 80px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
 }
 
 footer button {
-  position: fixed;
-  bottom: 0;
-  padding: 10px 20px;
-  width: 100%;
-  margin: 0px;
+  height: 60%;
+  width: 80%;
+  border-radius: 15px;
 }
 
-.graph-border-div {
-  position: absolute;
-  width: 350px;
-  border-bottom: 1px solid grey;
-  margin-top: 35px;
+footer button:hover {
+  background-color: skyblue;
+  transition: .5s;
+
 }
 
-.hidden {
+.pop-up {
   display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30%;
+  margin: 0 auto;
+  width: 400px;
+  height: 300px;
+  border: 1px solid black;
+  background-image: url(/images/judgey-penguin.jfif);
+  background-size: cover;
+  color: orange;
+  font-weight: 600;
+  text-align:center;
+  border-radius: 15px;
 }
 
-.button-box button:hover {
+.form-box {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+  padding-left: 30px;
+}
+
+label {
+  margin: 10px 0;
+}
+
+.submit-button {
+  margin-top: 140px;
+  padding: 10px 40px;
+  border-radius: 15px;
+}
+
+.submit-button:hover {
+  padding: 15px 50px;
+  transition: .5s;
   background-color: lightblue;
-  border-color: lightskyblue;
-  padding: 15px 10px;
-  transition: 0.5s;
+}
+
+@media only screen and (min-width: 768px) {
+  main {
+      flex-direction: row;
+      flex-wrap: wrap;
+  }
+
+  .graph-container {
+      width: 50%;
+  }
+
+  .button-container{
+      width: 15%;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 500px;
+      margin-left: 190px;
+  }
+
+  .button-container button {
+      width: 90%;
+      height: 10%;
+  }
+
+  .button-container button:hover {
+      width: 200px;
+  }
+
+  footer button:hover {
+      width: 90%; 
+  }
 }

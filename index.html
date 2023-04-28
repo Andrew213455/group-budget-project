@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Penguin Budegeting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
     <header>
-      <div class="logo">
-        <img src="/images/penguin-1-blueBackground.jfif" alt="" />
-      </div>
-      <h1>Club Penguin Budgeting</h1>
-      <div class="total-box">
-        <div class="spent">Spent: 0</div>
-        <div class="total">Total: 1000</div>
-      </div>
-    </header>
-    <main>
-      <section class="broke-bitch">
-        You have a full budget! Spend like the wind.
-      </section>
-      <section class="graph">
-        <div class="graph-border-div"></div>
-        <div class="total-graph">Total</div>
-        <div class="spent-graph">Spent</div>
-      </section>
-      <section class="button-box">
-        <button class="food">Food</button>
-        <button class="entertainment">Entertainment</button>
-        <button class="clothing">Clothing</button>
-        <button class="bills">Bills</button>
-      </section>
+        <img class="logo" src="/images/penguin-1-blueBackground.jfif" alt="" />
+        <h1>Club Penguin Budgeting</h1>
+        <div class="total-box">
+          <div class="spent">Spent: 0</div>
+          <div class="total">Total: 1000</div>
+        </div>
+      </header>
+      <main>
+        <section class="box condescend-message">
+            <p>dynamic condescending messages go here!</p>
+        </section>
+        <div class="box graph-container">
+            <div class="border">
+                <p>spent</p>
+                <p>total</p>
+            </div>
+        </div>
+        <section class="box button-container">
+            <button class="food">Food</button>
+            <button class="entertainment">Entertainment</button>
+            <button class="clothing">Clothing</button>
+            <button class="bills">Bills</button>
+        </section>
+      </main>
+      <footer>
+        <button class="reset">Reset - New Month</button>
+      </footer>
+
       <section class="pop-up">
         <form class="form-box">
           <h2 class="foodOption"></h2>
@@ -41,10 +45,8 @@
           <button class="submit-button">SUBMIT</button>
         </form>
       </section>
-    </main>
-    <footer>
-      <button>RESET - NEW MONTH</button>
-    </footer>
+
+
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
