@@ -1,4 +1,8 @@
-body, header, main, section, h1 {
+body,
+header,
+main,
+section,
+h1 {
   margin: 0;
   padding: 0;
 }
@@ -33,13 +37,11 @@ h1 {
   font-weight: 700;
 }
 
-
 main {
-  display:none;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 .box {
   width: 80%;
@@ -60,16 +62,49 @@ main {
   border: black solid 1px;
   height: 500px;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  align-items:flex-end
+  align-items: center;
 }
 
 .border {
   display: flex;
   justify-content: space-around;
-  align-items:flex-end;
+  align-items: flex-end;
   width: 80%;
-  border-top: 1px solid black;
+  border-top: 15px dashed black;
+  margin-left: 30px;
+}
+
+.bar-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 400px;
+  /* border: 1px solid black; */
+}
+
+.bar-container div {
+  height: 100px;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.total-container {
+  height: 100px;
+  border: 1px solid black;
+  flex: 1;
+}
+
+.bars {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.bar-container div p {
+  display: none;
 }
 
 .graph-container p {
@@ -85,17 +120,16 @@ main {
 }
 
 .button-container button {
-  height: 50%;;
+  height: 50%;
   width: 100px;
   border-radius: 15px;
-  
 }
 
 .button-container button:hover {
   height: 60px;
   width: 120px;
   background-color: lightblue;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 footer {
@@ -113,8 +147,7 @@ footer button {
 
 footer button:hover {
   background-color: skyblue;
-  transition: .5s;
-
+  transition: 0.5s;
 }
 
 .pop-up {
@@ -131,7 +164,7 @@ footer button:hover {
   background-size: cover;
   color: orange;
   font-weight: 600;
-  text-align:center;
+  text-align: center;
   border-radius: 15px;
 }
 
@@ -156,7 +189,7 @@ label {
 
 .submit-button:hover {
   padding: 15px 50px;
-  transition: .5s;
+  transition: 0.5s;
   background-color: lightblue;
 }
 
@@ -174,44 +207,43 @@ label {
   background-size: cover;
   color: white;
   font-weight: 600;
-  text-align:center;
+  text-align: center;
   border-radius: 15px;
 }
 
 @media only screen and (min-width: 768px) {
   main {
-      flex-direction: row;
-      flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .graph-container {
-      width: 50%;
+    width: 50%;
   }
 
-  .button-container{
-      width: 15%;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 500px;
-      margin-left: 190px;
+  .button-container {
+    width: 15%;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+    margin-left: 190px;
   }
 
   .button-container button {
-      width: 90%;
-      height: 10%;
+    width: 90%;
+    height: 10%;
   }
 
   .button-container button:hover {
-      width: 200px;
+    width: 200px;
   }
 
   footer button:hover {
-      width: 90%; 
+    width: 90%;
   }
 }
 
 @media only screen and (max-width: 420px) {
-  
   .button-container {
     display: flex;
     flex-wrap: wrap;

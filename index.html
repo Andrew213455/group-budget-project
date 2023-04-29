@@ -1,62 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Club Penguin Budegeting</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <img class="logo" src="/images/penguin-1-blueBackground.jfif" alt="" />
-        <h1>Club Penguin Budgeting</h1>
-        <div class="total-box">
-          <div class="spent">Spent: 0</div>
-          <div class="total">Total: 0</div>
-        </div>
-      </header>
-      <main>
-        <section class="box condescend-message">
-            <p>dynamic condescending messages go here!</p>
-        </section>
-        <div class="box graph-container">
-            <div class="border">
-                <p>spent</p>
-                <p>total</p>
+      <img class="logo" src="/images/penguin-1-blueBackground.jfif" alt="" />
+      <h1>Club Penguin Budgeting</h1>
+      <div class="total-box">
+        <div class="spent">Spent: 0</div>
+        <div class="total">Total: 0</div>
+      </div>
+    </header>
+    <main>
+      <section class="box condescend-message">
+        <p class="dynamic-message">blah blah blah</p>
+      </section>
+      <div class="box graph-container">
+        <section class="bars">
+          <div class="bar-container">
+            <div class="food-bar">
+              <p>food</p>
             </div>
-        </div>
-        <section class="box button-container">
-            <button class="food">Food</button>
-            <button class="entertainment">Entertainment</button>
-            <button class="clothing">Clothing</button>
-            <button class="bills">Bills</button>
+
+            <div class="entertain-bar">
+              <p>entertainment</p>
+            </div>
+
+            <div class="clothing-bar">
+              <p>clothing</p>
+            </div>
+
+            <div class="bills-bar">
+              <p>bills</p>
+            </div>
+          </div>
+          <div class="total-container">
+            <section class="total-bar"></section>
+          </div>
         </section>
-      </main>
-      <footer>
+        <section>
+          <div class="border">
+            <p>spent</p>
+            <p>total</p>
+          </div>
+        </section>
+      </div>
+      <section class="box button-container">
+        <button class="food">Food</button>
+        <button class="entertainment">Entertainment</button>
+        <button class="clothing">Clothing</button>
+        <button class="bills">Bills</button>
+      </section>
+    </main>
+    <footer>
         <button class="reset">Reset - New Month</button>
-      </footer>
+    </footer>
 
-      <section class="start-pop-up">
-        <form class="form-box form-box-1">
-          <label for="name">Name</label>
-          <input type="text" id="name">
-          <label for="budget">needing money A LOT now!</label>
-          <input type="number" id="budget">
-          <button>Submit</button>
-        </form>
-      </section>
+    <section class="start-pop-up">
+      <form class="form-box form-box-1">
+        <label for="name">Name</label>
+        <input type="text" id="name" />
+        <label for="budget">needing money A LOT now!</label>
+        <input type="number" id="budget" />
+        <button>Submit</button>
+      </form>
+    </section>
 
-      <section class="pop-up">
-        <form class="form-box form-box-2" >
-          <h2 class="foodOption"></h2>
-          <label for="number">How much did you spend this time..?</label>
-          <input type="number" id="spentValue" />
-          <button class="submit-button">SUBMIT</button>
-        </form>
-      </section>
-
+    <section class="pop-up">
+      <form class="form-box form-box-2">
+        <h2 class="foodOption"></h2>
+        <label for="number">How much did you spend this time..?</label>
+        <input value="0" type="number" id="spentValue" />
+        <button class="submit-button">SUBMIT</button>
+      </form>
+    </section>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
