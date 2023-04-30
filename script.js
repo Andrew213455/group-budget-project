@@ -23,6 +23,13 @@ const main = document.querySelector("main");
 let dynamicMessage = document.querySelector(".dynamic-message");
 
 
+const foodBar = document.querySelector(".food-bar");
+const entertainmentBar = document.querySelector(".entertain-bar");
+const clothingBar = document.querySelector(".clothing-bar");
+const billsBar = document.querySelector(".bills-bar");
+let totalBar = document.querySelector(".total-bar");
+
+
 
 const moneySpent = document.querySelector("#spentValue");
 const spentValue = document.querySelector(".spent");
@@ -35,7 +42,7 @@ let initialMoneyValue = null;
 
 let entertainment = 0;
 let food = 0;
-let clothes = 0;
+let clothing = 0;
 let bills = 0;
 
 let category = "";
@@ -105,7 +112,51 @@ expensesForm.addEventListener("submit", (e) => {
   runningTotal = initialMoneyValue -= +moneySpent.value;
   totalSpent += +moneySpent.value;
   spentValue.textContent = `spent: $${totalSpent}`;
-  headerTotal.textContent = `total: $${runningTotal}`
+  headerTotal.textContent = `total: $${runningTotal}`;
+
+  //1 if food button is clicked, it updates category, we create a new div inside of food-bar class.
+  //2 set a class for the div
+  //3 make the height of the div based on the percentage of money spent on food
+  //4 +initialMoney.value / +moneySpent.value
+  
+  if(category === "food") {
+    food += +moneySpent.value;
+    let foodPercent = food / +initialMoney.value * 100;
+    foodBar.style.height  = `${foodPercent * 3}px`
+    foodBar.style.backgroundColor = "yellow";
+    foodBar.style.border = "yellow";
+    //console.log(foodPercent);
+  } else if (category === "entertainment") {
+    entertainment += +moneySpent.value;
+    let entertainPercent = entertainment / +initialMoney.value * 100;
+    entertainmentBar.style.height = `${entertainPercent * 3}px`;
+    entertainmentBar.style.backgroundColor = "green";
+    entertainmentBar.style.border = "green";
+    //console.log(entertainPercent);
+  } else if (category === "clothing") {
+    clothing += +moneySpent.value;
+    let clothingPercent = clothing / +initialMoney.value * 100;
+    clothingBar.style.height = `${clothingPercent * 3}px`;
+    clothingBar.style.backgroundColor = "red";
+    clothingBar.style.border = "red";
+    //console.log(clothingPercent);
+  } else if (category === "bills") {
+    bills += +moneySpent.value;
+    let billsPercent = bills / +initialMoney.value * 100;
+    billsBar.style.height = `${billsPercent * 3}px`;
+    billsBar.style.backgroundColor = "blue";
+    billsBar.style.border = "blue";
+    //console.log(billsPercent);
+    
+  }
+
+
+  totalBar.style.height = `${(runningTotal /10) * 4}px`;
+  totalBar.style.backgroundColor = "grey";
+  totalBar.style.border = "gray";
+
+
+
 
   //Form Submission TODO:
   // this is where the graph altering will being
@@ -125,6 +176,8 @@ function getPercentage (item) {
 
   return Percentage;
 }
+
+
 
 
 
