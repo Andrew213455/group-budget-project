@@ -20,6 +20,7 @@ header {
   background-repeat: no-repeat;
   box-sizing: border-box;
   color: black;
+  z-index: 4;
 }
 
 h1 {
@@ -58,7 +59,7 @@ main {
 }
 
 .graph-container {
-  border: black solid 1px;
+  /* border: black solid 1px; */
   height: 500px;
   display: flex;
   flex-direction: column;
@@ -80,7 +81,7 @@ main {
   flex: 1;
   flex-direction: column;
   align-content: flex-end;
-  margin-left:  33%;
+  margin-left: 33%;
   margin-right: 15px;
 }
 
@@ -90,11 +91,11 @@ main {
   margin-left: 15px;
 }
 
- .bar-container div {
+.bar-container div {
   width: 100%;
 }
 
- .total-bar {
+.total-bar {
   height: 410px;
   background-color: grey;
 }
@@ -215,6 +216,46 @@ label {
   border-radius: 15px;
 }
 
+.graph-pop-up {
+  display: none;
+  width: 90%;
+  height: 150px;
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 15px;
+  top: 770px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  overflow-y: scroll;
+  overflow-wrap: break-word;
+  padding: 20px;
+  font-size: 1.5em;
+  line-height: 1.5;
+}
+
+.graph-pop-up::-webkit-scrollbar {
+  display: none;
+}
+
+.graph-X-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
+.graph-X-button:hover {
+  transition: 0.5s;
+  width: 30px;
+  height: 30px;
+}
+
 @media only screen and (min-width: 768px) {
   main {
     flex-direction: row;
@@ -244,6 +285,15 @@ label {
 
   footer button:hover {
     width: 90%;
+  }
+
+  .graph-pop-up {
+    position: absolute;
+    height: 275px;
+    width: 350px;
+    left: 47%;
+    top: 45%;
+    margin: 0;
   }
 }
 

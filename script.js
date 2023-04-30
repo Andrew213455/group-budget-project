@@ -1,12 +1,5 @@
 "use strict"
 
-// this is for the graph
-// 1.) make "food" variable all preset to 0
-// 2.) when money is put into variable turn it into a percent.
-// 3.) after its turned into a percent, store that percent in a variable.
-// 4.) use percent variable to adjust the height of whichever div.
-
-
 // selectors for html 
 const foodButton = document.querySelector(".food");
 const entertainmentButton = document.querySelector(".entertainment")
@@ -23,11 +16,21 @@ const main = document.querySelector("main");
 let dynamicMessage = document.querySelector(".dynamic-message");
 
 
+const graphPopUp = document.querySelector(".graph-pop-up")
+const graphFood = document.querySelector(".graph-food");
+const graphEntertainment = document.querySelector(".graph-entertainment");
+const graphClothing = document.querySelector(".graph-clothing");
+const graphBills = document.querySelector(".graph-bills");
+const graphInputItem = document.querySelector("#item");
+const graphInputPrice = document.querySelector("#spentValue");
+
+
 const foodBar = document.querySelector(".food-bar");
 const entertainmentBar = document.querySelector(".entertain-bar");
 const clothingBar = document.querySelector(".clothing-bar");
 const billsBar = document.querySelector(".bills-bar");
 let totalBar = document.querySelector(".total-bar");
+const allTheBars = document.querySelector(".bars")
 
 
 
@@ -66,11 +69,13 @@ const condescendingMessagefunction = () => {
     } else {
     dynamicMessage.innerText = ` ${name.value}, you still have some money left`;
     }
-
 }
 
 popUpBox.addEventListener("submit", (e) => {
   e.preventDefault();
+
+  // initial pop up when you first get on website
+
   initialMoneyValue = initialMoney.value;
   const nameValue = name.value;
   startingInfoForm.style.display = "none";
@@ -83,10 +88,15 @@ popUpBox.addEventListener("submit", (e) => {
 })
 
 buttonBox.addEventListener ("click", (e) => {
+
+  //pop up for expenses form
+
     main.style.display = "none";
     resetButton.style.display = "none";
     popUp.style.display = "flex";
     
+  // keeps track of which button we pressed: entertainment, food, bills, or clothing
+
     if (e.target.classList.contains("food")) {
       category = "food";
       // console.log(getPercentage(food));
@@ -103,7 +113,13 @@ buttonBox.addEventListener ("click", (e) => {
 
 expensesForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  //console.log("i was not")
+
+  
+  if (e.target.classList.contains("graph-X-button")) {
+    popUp.style.display = "none";
+  }
+  // display's. header total and spent values
+
   main.style.display = "flex";
   popUpBox.style.display = "none";
   popUp.style.display = "none";
@@ -114,68 +130,79 @@ expensesForm.addEventListener("submit", (e) => {
   spentValue.textContent = `spent: $${totalSpent}`;
   headerTotal.textContent = `total: $${runningTotal}`;
 
-  //1 if food button is clicked, it updates category, we create a new div inside of food-bar class.
-  //2 set a class for the div
-  //3 make the height of the div based on the percentage of money spent on food
-  //4 +initialMoney.value / +moneySpent.value
-  
+  // graph functionality for spent bar
+
   if(category === "food") {
     food += +moneySpent.value;
     let foodPercent = food / +initialMoney.value * 100;
     foodBar.style.height  = `${foodPercent * 3}px`
     foodBar.style.backgroundColor = "yellow";
     foodBar.style.border = "yellow";
-    //console.log(foodPercent);
+    
+    const newLi = document.createElement("li");
+    newLi.setAttribute("class", "food-li");
+    newLi.innerText = `item: ${graphInputItem.value} | price: $${graphInputPrice.value}`;
+    graphFood.append(newLi);
+
   } else if (category === "entertainment") {
     entertainment += +moneySpent.value;
     let entertainPercent = entertainment / +initialMoney.value * 100;
     entertainmentBar.style.height = `${entertainPercent * 3}px`;
     entertainmentBar.style.backgroundColor = "green";
     entertainmentBar.style.border = "green";
-    //console.log(entertainPercent);
+
+    const newLi = document.createElement("li");
+    newLi.setAttribute("class", "entertainment-li");
+    newLi.innerText = `item: ${graphInputItem.value} | price: $${graphInputPrice.value}`;
+    graphEntertainment.append(newLi);
+
   } else if (category === "clothing") {
     clothing += +moneySpent.value;
     let clothingPercent = clothing / +initialMoney.value * 100;
     clothingBar.style.height = `${clothingPercent * 3}px`;
     clothingBar.style.backgroundColor = "red";
     clothingBar.style.border = "red";
-    //console.log(clothingPercent);
+
+    const newLi = document.createElement("li");
+    newLi.setAttribute("class", "clothing-li");
+    newLi.innerText = `item: ${graphInputItem.value} | price: $${graphInputPrice.value}`;
+    graphClothing.append(newLi);
+
   } else if (category === "bills") {
     bills += +moneySpent.value;
     let billsPercent = bills / +initialMoney.value * 100;
     billsBar.style.height = `${billsPercent * 3}px`;
     billsBar.style.backgroundColor = "blue";
     billsBar.style.border = "blue";
-    //console.log(billsPercent);
     
+    const newLi = document.createElement("li");
+    newLi.setAttribute("class", "bills-li");
+    newLi.innerText = `item: ${graphInputItem.value} | price: $${graphInputPrice.value}`;
+    graphBills.append(newLi);
+
   }
 
+  //graph functionality for total bar
 
   totalBar.style.height = `${(runningTotal /10) * 4}px`;
   totalBar.style.backgroundColor = "grey";
   totalBar.style.border = "gray";
 
-
-
-
-  //Form Submission TODO:
-  // this is where the graph altering will being
-  // 1. need to add new divs for each category and apply them to the hight of the graph.
-  // - 1px per dollar (or % of height?)
-  // 2. need to subtract from total graph bar
-  // 3. update the running total/spent in header
   condescendingMessagefunction();
 })
 
-// Outside of submit button TODO:
-// start with only one alert asking monthly budget
-// that number entered will populate total amounts and main page will load
+allTheBars.addEventListener("click", (e) => {
+   if (e.target.classList.contains("total-bar")) {
+    //console.log("total bar was clicked");
+    graphPopUp.style.display = "block";
+  }
+})
 
-function getPercentage (item) {
-  const Percentage = `${((+item / +initialMoneyValue) * 100).toFixed(2)}%`;
-
-  return Percentage;
-}
+graphPopUp.addEventListener("click", (e) => {
+  if (e.target.classList.contains("graph-X-button")) {
+    graphPopUp.style.display = "none";
+  }
+})
 
 
 
