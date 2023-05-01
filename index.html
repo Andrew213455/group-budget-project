@@ -48,8 +48,8 @@
         </section>
         <section>
           <div class="border">
-            <p>spent</p>
-            <p>total</p>
+            <p>Spent</p>
+            <p>Total</p>
           </div>
         </section>
       </div>
@@ -61,14 +61,16 @@
       </section>
     </main>
     <footer>
-      <button class="reset">Reset - New Month</button>
+      <form>
+        <button class="reset">Reset - New Month</button>
+      </form>
     </footer>
 
     <section class="start-pop-up">
       <form class="form-box form-box-1">
-        <label for="name">Name</label>
+        <label class="start-label" for="name">Name</label>
         <input type="text" id="name" />
-        <label for="budget">needing money A LOT now!</label>
+        <label for="budget">Enter monthly budget below</label>
         <input type="number" id="budget" />
         <button>Submit</button>
       </form>
@@ -80,18 +82,26 @@
         <h2 class="foodOption"></h2>
         <label for="number">How much did you spend this time..?</label>
         <input type="number" id="spentValue" />
-        <label for="item">what did ya get?</label>
-        <input type="text" id="item">
+        <label for="item">What did you get?</label>
+        <input type="text" id="item" />
         <button class="submit-button">SUBMIT</button>
       </form>
     </section>
 
     <section class="graph-pop-up">
       <button class="graph-X-button">X</button>
-      <ol class="graph-food">Food</ol>
-      <ol class="graph-entertainment">Entertainment</ol>
-      <ol class="graph-clothing">Clothing</ol>
-      <ol class="graph-bills">Bills</ol>
+      <ol class="graph-food">
+        Food
+      </ol>
+      <ol class="graph-entertainment">
+        Entertainment
+      </ol>
+      <ol class="graph-clothing">
+        Clothing
+      </ol>
+      <ol class="graph-bills">
+        Bills
+      </ol>
     </section>
 
     <script src="script.js"></script>
