@@ -84,6 +84,7 @@ popUpBox.addEventListener("submit", (e) => {
   startingInfoForm.style.display = "none";
   main.style.display = "flex";
   headerTotal.textContent = `Total: $` + initialMoneyValue;
+  submitButton.style.display = "flex";
 
   condescendingMessagefunction();
 });
@@ -189,7 +190,10 @@ expensesForm.addEventListener("submit", (e) => {
   totalBar.style.height = `${(runningTotal / 10) * 4}px`;
   totalBar.style.backgroundColor = "grey";
   totalBar.style.border = "gray";
-  console.log(runningTotal);
+  //console.log(runningTotal);
+  if (runningTotal <= 0) {
+    totalBar.style.display = "none";
+  }
   condescendingMessagefunction();
 });
 
@@ -223,3 +227,4 @@ xButton.addEventListener("click", (e) => {
     resetButton.style.display = "block";
   }
 });
+
