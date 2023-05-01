@@ -16,6 +16,9 @@ const main = document.querySelector("main");
 let dynamicMessage = document.querySelector(".dynamic-message");
 const xButton = document.querySelector(".graph-X-button");
 const submitButton = document.querySelector(".submit-button");
+const disButton = document.querySelectorAll(".dis-button");
+const addMoneyPopup = document.querySelector(".form-add-money");
+const addMoneyPopup2 = document.querySelector(".add-money-popup");
 
 //selectors for pop up on graph
 const graphPopUp = document.querySelector(".graph-pop-up");
@@ -25,6 +28,7 @@ const graphClothing = document.querySelector(".graph-clothing");
 const graphBills = document.querySelector(".graph-bills");
 const graphInputItem = document.querySelector("#item");
 const graphInputPrice = document.querySelector("#spentValue");
+const addMoneyInput = document.querySelector("#add-money");
 
 // selectors for graph bars
 const foodBar = document.querySelector(".food-bar");
@@ -85,6 +89,11 @@ popUpBox.addEventListener("submit", (e) => {
   main.style.display = "flex";
   headerTotal.textContent = `Total: $` + initialMoneyValue;
   submitButton.style.display = "flex";
+  resetButton.style.display = "block";
+
+  runningTotal = initialMoneyValue;
+  spentValue.textContent = `Spent: $${totalSpent}`;
+  headerTotal.textContent = `Total: $${runningTotal}`;
 
   condescendingMessagefunction();
 });
@@ -107,6 +116,14 @@ buttonBox.addEventListener("click", (e) => {
     category = "clothing";
   } else if (e.target.classList.contains("bills")) {
     category = "bills";
+  } else if (e.target.classList.contains("add-funds")) {
+    graphPopUp.style.display = "none";
+    main.style.display = "none";
+    resetButton.style.display = "none";
+    popUp.style.display = "none";
+    addMoneyPopup.style.display = "flex";
+    addMoneyPopup2.style.display = "flex";
+    category = "add-funds"
   }
 
   condescendingMessagefunction();
@@ -125,7 +142,7 @@ expensesForm.addEventListener("submit", (e) => {
   resetButton.style.display = "block";
 
   // functionality for header totals
-  runningTotal = initialMoneyValue -= +moneySpent.value;
+  runningTotal -= +moneySpent.value;
   totalSpent += +moneySpent.value;
   spentValue.textContent = `Spent: $${totalSpent}`;
   headerTotal.textContent = `Total: $${runningTotal}`;
@@ -191,9 +208,15 @@ expensesForm.addEventListener("submit", (e) => {
   totalBar.style.backgroundColor = "grey";
   totalBar.style.border = "gray";
   //console.log(runningTotal);
-  if (runningTotal <= 0) {
+  if (runningTotal <= 1) {
     totalBar.style.display = "none";
   }
+  
+  if(runningTotal <= 0) {
+    disButton.forEach((button) => {
+        button.disabled = true;
+      })
+    }
   condescendingMessagefunction();
 });
 
@@ -227,4 +250,36 @@ xButton.addEventListener("click", (e) => {
     resetButton.style.display = "block";
   }
 });
+
+addMoneyPopup2.addEventListener("click", (e) => {
+  if (e.target.classList.contains("X-button")) {
+    main.style.display = "flex";
+    resetButton.style.display = "block";
+    addMoneyPopup.style.display = "none";
+    addMoneyPopup2.style.display = "none";
+  }
+})
+
+addMoneyPopup.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if(category === "add-funds") {
+    runningTotal += +addMoneyInput.value;
+    headerTotal.textContent = `Total: $${runningTotal}`;
+    addMoneyPopup.style.display = "none";
+    main.style.display = "flex";
+    resetButton.style.display = "block";
+    addMoneyPopup2.style.display = "none";
+    console.log(runningTotal);
+  }
+
+  if(runningTotal >= 0) {
+    disButton.forEach((button) => {
+      button.disabled = false;
+      totalBar.style.display ="flex";
+      totalBar.style.height = `${(runningTotal / 10) * 4}px`;
+    })
+  }
+})
+
 

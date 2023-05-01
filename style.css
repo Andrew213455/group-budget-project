@@ -79,6 +79,15 @@ main {
 
 }
 
+.graph-container p {
+  padding: 0 40px;
+}
+
+.graph-container:hover {
+  scale: 1.1;
+  transition: .5s;
+}
+
 .border {
   display: flex;
   justify-content: space-around;
@@ -122,10 +131,6 @@ main {
 
 .bar-container div p {
   display: none;
-}
-
-.graph-container p {
-  padding: 0 40px;
 }
 
 .button-container {
@@ -321,6 +326,32 @@ label {
   transition: 0.5s;
   width: 30px;
   height: 30px;
+}
+
+.add-money-popup {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+
+}
+
+.add-money-popup form {
+  display: none;
+  flex-direction: column;
+  height: 300px;
+  width: 400px;
+  border: 1px solid grey;
+  border-radius: 15px;
+  background-color:#AEDBF0;
+  align-items:center;
+}
+
+.add-money-popup label {
+  margin-top: 90px;
 }
 
 @media only screen and (min-width: 768px) {
