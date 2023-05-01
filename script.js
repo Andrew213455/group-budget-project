@@ -14,6 +14,8 @@ const popUp = document.querySelector(".pop-up");
 const resetButton = document.querySelector(".reset");
 const main = document.querySelector("main");
 let dynamicMessage = document.querySelector(".dynamic-message");
+const xButton = document.querySelector(".graph-X-button");
+const submitButton = document.querySelector(".submit-button");
 
 //selectors for pop up on graph
 const graphPopUp = document.querySelector(".graph-pop-up");
@@ -113,9 +115,9 @@ expensesForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   // display's
-  if (e.target.classList.contains("graph-X-button")) {
-    popUp.style.display = "none";
-  }
+  // if (e.target.classList.contains("graph-X-button")) {
+  //   popUp.style.display = "none";
+  // }
   main.style.display = "flex";
   popUpBox.style.display = "none";
   popUp.style.display = "none";
@@ -211,5 +213,13 @@ allTheBars.addEventListener("click", (e) => {
 graphPopUp.addEventListener("click", (e) => {
   if (e.target.classList.contains("graph-X-button")) {
     graphPopUp.style.display = "none";
+  }
+});
+
+xButton.addEventListener("click", (e) => {
+  if (e.target.classList.contains("graph-X-button")) {
+    popUp.style.display = "none";
+    main.style.display = "flex";
+    resetButton.style.display = "block";
   }
 });

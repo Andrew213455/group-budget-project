@@ -11,7 +11,7 @@ header {
   display: flex;
   position: fixed;
   width: 100%;
-  height: 100px;
+  height: 150px;
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid grey;
@@ -71,7 +71,9 @@ main {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: #CBF1FA;
+  background-image: url(images/penguin-family-6329395549843548965168746519684.jpg);
+  background-repeat: none;
+  background-size: cover;
   border-radius: 15px;
   border: 1px solid grey
 }
@@ -137,7 +139,7 @@ main {
   height: 50%;
   width: 100px;
   border-radius: 15px;
-  background-color: #CBF1FA;
+  background-color: #6BA7CC;
   border: 1px solid grey
   
 }
@@ -181,7 +183,7 @@ footer form button {
   width: 100%;
   border-radius: 15px;
   padding: 20px;
-  background-color: #CBF1FA;
+  background-color: #6BA7CC;
   border: 2px solid grey
 }
 
@@ -288,10 +290,19 @@ label {
   padding: 20px;
   font-size: 1.5em;
   line-height: 1.5;
+  background-color: #AEDBF0;
 }
 
 .graph-pop-up::-webkit-scrollbar {
   display: none;
+}
+
+.graph-pop-up ol {
+  font-weight: bold;
+}
+
+.graph-pop-up li {
+  font-weight: lighter;
 }
 
 .graph-X-button {
