@@ -15,7 +15,7 @@ const resetButton = document.querySelector(".reset");
 const main = document.querySelector("main");
 let dynamicMessage = document.querySelector(".dynamic-message");
 
-
+//selectors for pop up on graph
 const graphPopUp = document.querySelector(".graph-pop-up")
 const graphFood = document.querySelector(".graph-food");
 const graphEntertainment = document.querySelector(".graph-entertainment");
@@ -24,7 +24,7 @@ const graphBills = document.querySelector(".graph-bills");
 const graphInputItem = document.querySelector("#item");
 const graphInputPrice = document.querySelector("#spentValue");
 
-
+// selectors for graph bars
 const foodBar = document.querySelector(".food-bar");
 const entertainmentBar = document.querySelector(".entertain-bar");
 const clothingBar = document.querySelector(".clothing-bar");
@@ -33,7 +33,7 @@ let totalBar = document.querySelector(".total-bar");
 const allTheBars = document.querySelector(".bars")
 
 
-
+//selectors for math
 const moneySpent = document.querySelector("#spentValue");
 const spentValue = document.querySelector(".spent");
 const headerTotal = document.querySelector(".total")
@@ -114,17 +114,16 @@ buttonBox.addEventListener ("click", (e) => {
 expensesForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  
+  // display's
   if (e.target.classList.contains("graph-X-button")) {
     popUp.style.display = "none";
   }
-  // display's. header total and spent values
-
   main.style.display = "flex";
   popUpBox.style.display = "none";
   popUp.style.display = "none";
   resetButton.style.display = "block";
   
+  // functionality for header totals
   runningTotal = initialMoneyValue -= +moneySpent.value;
   totalSpent += +moneySpent.value;
   spentValue.textContent = `spent: $${totalSpent}`;
@@ -133,48 +132,56 @@ expensesForm.addEventListener("submit", (e) => {
   // graph functionality for spent bar
 
   if(category === "food") {
+    // graph functionality for spent bar
     food += +moneySpent.value;
     let foodPercent = food / +initialMoney.value * 100;
     foodBar.style.height  = `${foodPercent * 3}px`
     foodBar.style.backgroundColor = "yellow";
     foodBar.style.border = "yellow";
     
+    //functionality for itemized list
     const newLi = document.createElement("li");
     newLi.setAttribute("class", "food-li");
     newLi.innerText = `item: ${graphInputItem.value} | price: $${graphInputPrice.value}`;
     graphFood.append(newLi);
 
   } else if (category === "entertainment") {
+    // graph functionality for spent bar
     entertainment += +moneySpent.value;
     let entertainPercent = entertainment / +initialMoney.value * 100;
     entertainmentBar.style.height = `${entertainPercent * 3}px`;
     entertainmentBar.style.backgroundColor = "green";
     entertainmentBar.style.border = "green";
 
+    //functionality for itemized list
     const newLi = document.createElement("li");
     newLi.setAttribute("class", "entertainment-li");
     newLi.innerText = `item: ${graphInputItem.value} | price: $${graphInputPrice.value}`;
     graphEntertainment.append(newLi);
 
   } else if (category === "clothing") {
+    // graph functionality for spent bar
     clothing += +moneySpent.value;
     let clothingPercent = clothing / +initialMoney.value * 100;
     clothingBar.style.height = `${clothingPercent * 3}px`;
     clothingBar.style.backgroundColor = "red";
     clothingBar.style.border = "red";
 
+    //functionality for itemized list
     const newLi = document.createElement("li");
     newLi.setAttribute("class", "clothing-li");
     newLi.innerText = `item: ${graphInputItem.value} | price: $${graphInputPrice.value}`;
     graphClothing.append(newLi);
 
   } else if (category === "bills") {
+    // graph functionality for spent bar
     bills += +moneySpent.value;
     let billsPercent = bills / +initialMoney.value * 100;
     billsBar.style.height = `${billsPercent * 3}px`;
     billsBar.style.backgroundColor = "blue";
     billsBar.style.border = "blue";
     
+    //functionality for itemized list
     const newLi = document.createElement("li");
     newLi.setAttribute("class", "bills-li");
     newLi.innerText = `item: ${graphInputItem.value} | price: $${graphInputPrice.value}`;
@@ -183,7 +190,6 @@ expensesForm.addEventListener("submit", (e) => {
   }
 
   //graph functionality for total bar
-
   totalBar.style.height = `${(runningTotal /10) * 4}px`;
   totalBar.style.backgroundColor = "grey";
   totalBar.style.border = "gray";
@@ -193,7 +199,6 @@ expensesForm.addEventListener("submit", (e) => {
 
 allTheBars.addEventListener("click", (e) => {
    if (e.target.classList.contains("total-bar")) {
-    //console.log("total bar was clicked");
     graphPopUp.style.display = "block";
   }
 })
