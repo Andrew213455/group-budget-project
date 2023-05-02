@@ -82,26 +82,6 @@ const condescendingMessagefunction = () => {
     dynamicMessage.innerText = `dang ${name.value}, you actually managed to make money?! nice!!!`
   }
 
-  // let totalSpentPercent = (totalSpent / +initialMoney.value) * 100;
-  // if (totalSpentPercent > 100) {
-  //   dynamicMessage.innerText = `Hey ${name.value}, Give me money. Money me. Money now. Me a money needing a lot now`;
-  // } else if (totalSpentPercent === 100) {
-  //   dynamicMessage.innerText = `Hey ${name.value}, STOP SPENDING! You're all out of money...`;
-  // } else if (totalSpentPercent >= 80) {
-  //   dynamicMessage.innerText = `Woah there ${name.value}! You're not too good at this budgeting thing...`;
-  // } else if (totalSpentPercent >= 60) {
-  //   dynamicMessage.innerText = `Actually, maybe you should ease up a bit, you only have about 40% of your budget left`;
-  // } else if (totalSpentPercent >= 40) {
-  //   dynamicMessage.innerText = `Woaaahhh you're halfway there! WOOOAAAH Spend without a care!`;
-  // } else if (totalSpentPercent >= 20) {
-  //   dynamicMessage.innerText = `Still looking good! So responsible! Go get yourself some concert tickets or something.`;
-  // } else if (totalSpentPercent > 0) {
-  //   dynamicMessage.innerText = `Nice job ${name.value}, you still have a ton of money to go treat yourself`;
-  // } else if (totalSpentPercent < 0) {
-  //   dynamicMessage.innerText = `I'm proud of you ${name.value}, you somehow have more money than you started with!`;
-  // } else {
-  //   dynamicMessage.innerText = ` ${name.value}, welcome to the new month! Full money = full send!`;
-  // }
 };
 
 popUpBox.addEventListener("submit", (e) => {
@@ -280,6 +260,10 @@ graphPopUp.addEventListener("click", (e) => {
     food -= selectedPrice;
     let foodPercent = (food / +initialMoney.value) * 100;
     foodBar.style.height = `${foodPercent * 3}px`;
+    disButton.forEach((button) => {
+      button.disabled = false;
+    })
+    condescendingMessagefunction();
     e.target.remove();
 
   } else if (e.target.classList.contains("entertainment-li")) {
@@ -291,6 +275,10 @@ graphPopUp.addEventListener("click", (e) => {
     entertainment -= selectedPrice;
     let entertainmentPercent = (entertainment / +initialMoney.value) * 100;
     entertainmentBar.style.height = `${entertainmentPercent * 3}px`;
+    disButton.forEach((button) => {
+      button.disabled = false;
+    });
+    condescendingMessagefunction();
     e.target.remove();
   } else if (e.target.classList.contains("clothing-li")) {
     const selectedPrice = e.target.getAttribute("data-price");
@@ -301,6 +289,10 @@ graphPopUp.addEventListener("click", (e) => {
     clothing -= selectedPrice;
     let clothingPercent = (clothing / +initialMoney.value) * 100;
     clothingBar.style.height = `${clothingPercent * 3}px`;
+    disButton.forEach((button) => {
+      button.disabled = false;
+    });
+    condescendingMessagefunction();
     e.target.remove();
   } else if (e.target.classList.contains("bills-li")) {
     const selectedPrice = e.target.getAttribute("data-price");
@@ -311,6 +303,10 @@ graphPopUp.addEventListener("click", (e) => {
     bills -= selectedPrice;
     let billsPercent = (bills / +initialMoney.value) * 100;
     billsBar.style.height = `${billsPercent * 3}px`;
+    disButton.forEach((button) => {
+      button.disabled = false;
+    })
+    condescendingMessagefunction();
     e.target.remove();
   }
 });

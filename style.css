@@ -128,27 +128,27 @@ main {
   flex: 1;
   flex-direction: column;
   align-content: flex-end;
-  margin-left: 33%;
-  margin-right: 15px;
+  align-items: center;
 }
 
 .total-container {
-  flex: 1;
-  margin-right: 33%;
-  margin-left: 15px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
 }
 
 .bar-container div {
-  width: 100%;
+  width: 75px;
 }
 
 .total-bar {
   height: 410px;
   background-color: grey;
+  width: 75px;
 }
 
 .bars {
-  width: 100%;
+  width: 385px;
   height: 82%;
   display: flex;
   justify-content: space-between;
@@ -157,6 +157,11 @@ main {
 
 .bar-container div p {
   display: none;
+}
+
+.add-funds:hover {
+  scale: 1.1;
+  background-color: rgb(173, 66, 173);
 }
 
 .button-container {
@@ -177,8 +182,7 @@ main {
 }
 
 .button-container button:hover {
-  height: 60px;
-  width: 120px;
+  scale: 1.1;
   transition: 0.5s;
 }
 
