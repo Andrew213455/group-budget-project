@@ -26,6 +26,32 @@ header {
   left: 0;
 }
 
+
+.food-li:hover {
+  scale: 1.1;
+  transition: .5s;
+  cursor:pointer
+}
+
+.entertainment-li:hover {
+  scale: 1.1;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.clothing-li:hover {
+  scale: 1.1;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.bills-li:hover {
+  scale: 1.1;
+  transition: .5s;
+  cursor: pointer;
+}
+
+
 body {
   background-color: #E2FCFF;
 }
@@ -225,6 +251,8 @@ footer button:hover {
   align-items: center;
   justify-content: center;
   padding-left: 35px;
+  position: absolute;
+  top: -39px;
 }
 
 label {
@@ -234,11 +262,28 @@ label {
 .submit-button {
   margin-top: 140px;
   padding: 10px 40px;
+  position: absolute;
   border-radius: 15px;
+  top: 180px;
 }
 
 .submit-button:hover {
-  padding: 15px 50px;
+  scale: 1.1;
+  transition: 0.5s;
+  background-color: lightblue;
+}
+
+.submit-button-2 {
+  position: absolute;
+  top: 135px;
+  padding: 15px;
+  width: 125px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.submit-button-2:hover {
+  scale: 1.1;
   transition: 0.5s;
   background-color: lightblue;
 }
@@ -286,7 +331,7 @@ label {
   position: absolute;
   border: 1px solid black;
   border-radius: 15px;
-  top: 1%;
+  top: 130%;
   left: 0;
   right: 0;
   margin-left: auto;
@@ -336,18 +381,40 @@ label {
   margin-left: auto;
   margin-right: auto;
   width: 400px;
+  background-image: url(/images/RT4GFWf858-6.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 15px;
 
 }
 
+.add-money-label {
+  position:absolute;
+  top: -71px;
+}
+
+#add-money {
+  position: absolute;
+  top: 114px;
+  width: 170px;
+}
+
 .add-money-popup form {
+  color: blue;
+  font-size: 1.5em;
+  font-weight: bold;
   display: none;
   flex-direction: column;
   height: 300px;
   width: 400px;
   border: 1px solid grey;
   border-radius: 15px;
-  background-color:#AEDBF0;
   align-items:center;
+}
+
+.form-add-money img {
+  height: 75px;
+  margin-top: 20px;
 }
 
 .add-money-popup label {

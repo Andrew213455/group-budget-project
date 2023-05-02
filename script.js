@@ -19,6 +19,10 @@ const submitButton = document.querySelector(".submit-button");
 const disButton = document.querySelectorAll(".dis-button");
 const addMoneyPopup = document.querySelector(".form-add-money");
 const addMoneyPopup2 = document.querySelector(".add-money-popup");
+const foodLi = document.querySelector(".food-li");
+const entertainmentLi = document.querySelector(".entertainment-li");
+const clothingLi = document.querySelector(".clothing-li");
+const billsLi = document.querySelector(".bills-li");
 
 //selectors for pop up on graph
 const graphPopUp = document.querySelector(".graph-pop-up");
@@ -43,10 +47,16 @@ const moneySpent = document.querySelector("#spentValue");
 const spentValue = document.querySelector(".spent");
 const headerTotal = document.querySelector(".total");
 const name = document.querySelector("#name");
+const item = document.querySelector("#item")
 let initialMoney = document.querySelector("#budget");
 let totalSpent = 0;
 let runningTotal = 0;
 let initialMoneyValue = null;
+
+let numberFood = 0;
+let numberEntertainment = 0;
+let numberClothing = 0;
+let numberBills = 0;
 
 let entertainment = 0;
 let food = 0;
@@ -55,27 +65,43 @@ let bills = 0;
 
 let category = "";
 
+
+
 const condescendingMessagefunction = () => {
-  let totalSpentPercent = (totalSpent / +initialMoney.value) * 100;
-  if (totalSpentPercent > 100) {
-    dynamicMessage.innerText = `Hey ${name.value}, Give me money. Money me. Money now. Me a money needing a lot now`;
-  } else if (totalSpentPercent === 100) {
-    dynamicMessage.innerText = `Hey ${name.value}, STOP SPENDING! You're all out of money...`;
-  } else if (totalSpentPercent >= 80) {
-    dynamicMessage.innerText = `Woah there ${name.value}! You're not too good at this budgeting thing...`;
-  } else if (totalSpentPercent >= 60) {
-    dynamicMessage.innerText = `Actually, maybe you should ease up a bit, you only have about 40% of your budget left`;
-  } else if (totalSpentPercent >= 40) {
-    dynamicMessage.innerText = `Woaaahhh you're halfway there! WOOOAAAH Spend without a care!`;
-  } else if (totalSpentPercent >= 20) {
-    dynamicMessage.innerText = `Still looking good! So responsible! Go get yourself some concert tickets or something.`;
-  } else if (totalSpentPercent > 0) {
-    dynamicMessage.innerText = `Nice job ${name.value}, you still have a ton of money to go treat yourself`;
-  } else if (totalSpentPercent < 0) {
-    dynamicMessage.innerText = `I'm proud of you ${name.value}, you somehow have more money than you started with!`;
-  } else {
-    dynamicMessage.innerText = ` ${name.value}, welcome to the new month! Full money = full send!`;
+   if (runningTotal > totalSpent) {
+    dynamicMessage.innerText = `hey ${name.value}, looking good on that spending!`
+  } else if (runningTotal === totalSpent) {
+    dynamicMessage.innerText = `woaaaahhhh were halfway there, WOAHHHHH, livin' on a prayer`
+  } else if (runningTotal === 0) {
+    dynamicMessage.innerText = "You're out!! what a disappointment. whats the matter with you?? Add more funds to continue spending"
+  } else if (totalSpent > +initialMoney.value) {
+    dynamicMessage.innerText = `Give me money. Money me. Money now. Me a money needing a lot now. Add more funds to continue spending`
+  } else if (runningTotal < totalSpent) {
+    dynamicMessage.innerText = `Jeez ${name.value}, you're spending a LOT`
+  } else if (runningTotal > +initialMoney.value) {
+    dynamicMessage.innerText = `dang ${name.value}, you actually managed to make money?! nice!!!`
   }
+
+  // let totalSpentPercent = (totalSpent / +initialMoney.value) * 100;
+  // if (totalSpentPercent > 100) {
+  //   dynamicMessage.innerText = `Hey ${name.value}, Give me money. Money me. Money now. Me a money needing a lot now`;
+  // } else if (totalSpentPercent === 100) {
+  //   dynamicMessage.innerText = `Hey ${name.value}, STOP SPENDING! You're all out of money...`;
+  // } else if (totalSpentPercent >= 80) {
+  //   dynamicMessage.innerText = `Woah there ${name.value}! You're not too good at this budgeting thing...`;
+  // } else if (totalSpentPercent >= 60) {
+  //   dynamicMessage.innerText = `Actually, maybe you should ease up a bit, you only have about 40% of your budget left`;
+  // } else if (totalSpentPercent >= 40) {
+  //   dynamicMessage.innerText = `Woaaahhh you're halfway there! WOOOAAAH Spend without a care!`;
+  // } else if (totalSpentPercent >= 20) {
+  //   dynamicMessage.innerText = `Still looking good! So responsible! Go get yourself some concert tickets or something.`;
+  // } else if (totalSpentPercent > 0) {
+  //   dynamicMessage.innerText = `Nice job ${name.value}, you still have a ton of money to go treat yourself`;
+  // } else if (totalSpentPercent < 0) {
+  //   dynamicMessage.innerText = `I'm proud of you ${name.value}, you somehow have more money than you started with!`;
+  // } else {
+  //   dynamicMessage.innerText = ` ${name.value}, welcome to the new month! Full money = full send!`;
+  // }
 };
 
 popUpBox.addEventListener("submit", (e) => {
@@ -83,8 +109,7 @@ popUpBox.addEventListener("submit", (e) => {
 
   // initial pop up when you first get on website
 
-  initialMoneyValue = initialMoney.value;
-  const nameValue = name.value;
+  initialMoneyValue = +initialMoney.value;
   startingInfoForm.style.display = "none";
   main.style.display = "flex";
   headerTotal.textContent = `Total: $` + initialMoneyValue;
@@ -131,11 +156,7 @@ buttonBox.addEventListener("click", (e) => {
 
 expensesForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  // display's
-  // if (e.target.classList.contains("graph-X-button")) {
-  //   popUp.style.display = "none";
-  // }
+  // displays
   main.style.display = "flex";
   popUpBox.style.display = "none";
   popUp.style.display = "none";
@@ -157,11 +178,13 @@ expensesForm.addEventListener("submit", (e) => {
     foodBar.style.backgroundColor = "rgb(245, 245, 112)";
     foodBar.style.border = "rgb(245, 245, 112)";
 
-    //functionality for itemized list
+    // functionality for itemized list
     const newLi = document.createElement("li");
     newLi.setAttribute("class", "food-li");
+    newLi.setAttribute("data-price", graphInputPrice.value);
     newLi.innerText = `Item: ${graphInputItem.value} | Price: $${graphInputPrice.value}`;
     graphFood.append(newLi);
+
   } else if (category === "entertainment") {
     // graph functionality for spent bar
     entertainment += +moneySpent.value;
@@ -173,8 +196,10 @@ expensesForm.addEventListener("submit", (e) => {
     //functionality for itemized list
     const newLi = document.createElement("li");
     newLi.setAttribute("class", "entertainment-li");
+    newLi.setAttribute("data-price", graphInputPrice.value);
     newLi.innerText = `Item: ${graphInputItem.value} | Price: $${graphInputPrice.value}`;
     graphEntertainment.append(newLi);
+
   } else if (category === "clothing") {
     // graph functionality for spent bar
     clothing += +moneySpent.value;
@@ -186,8 +211,10 @@ expensesForm.addEventListener("submit", (e) => {
     //functionality for itemized list
     const newLi = document.createElement("li");
     newLi.setAttribute("class", "clothing-li");
+    newLi.setAttribute("data-price", graphInputPrice.value);
     newLi.innerText = `Item: ${graphInputItem.value} | Price: $${graphInputPrice.value}`;
     graphClothing.append(newLi);
+
   } else if (category === "bills") {
     // graph functionality for spent bar
     bills += +moneySpent.value;
@@ -199,8 +226,10 @@ expensesForm.addEventListener("submit", (e) => {
     //functionality for itemized list
     const newLi = document.createElement("li");
     newLi.setAttribute("class", "bills-li");
+    newLi.setAttribute("data-price", graphInputPrice.value);
     newLi.innerText = `Item: ${graphInputItem.value} | Price: $${graphInputPrice.value}`;
     graphBills.append(newLi);
+
   }
 
   //graph functionality for total bar
@@ -241,6 +270,49 @@ graphPopUp.addEventListener("click", (e) => {
   if (e.target.classList.contains("graph-X-button")) {
     graphPopUp.style.display = "none";
   }
+
+  if(e.target.classList.contains("food-li")) {
+    const selectedPrice = e.target.getAttribute("data-price");
+    runningTotal += +selectedPrice;
+    totalSpent -= +selectedPrice;
+    spentValue.textContent = `Spent: $${totalSpent}`;
+    headerTotal.textContent = `Total: $${runningTotal}`;
+    food -= selectedPrice;
+    let foodPercent = (food / +initialMoney.value) * 100;
+    foodBar.style.height = `${foodPercent * 3}px`;
+    e.target.remove();
+
+  } else if (e.target.classList.contains("entertainment-li")) {
+    const selectedPrice = e.target.getAttribute("data-price");
+    runningTotal += +selectedPrice;
+    totalSpent -= +selectedPrice;
+    spentValue.textContent = `Spent: $${totalSpent}`;
+    headerTotal.textContent = `Total: $${runningTotal}`;
+    entertainment -= selectedPrice;
+    let entertainmentPercent = (entertainment / +initialMoney.value) * 100;
+    entertainmentBar.style.height = `${entertainmentPercent * 3}px`;
+    e.target.remove();
+  } else if (e.target.classList.contains("clothing-li")) {
+    const selectedPrice = e.target.getAttribute("data-price");
+    runningTotal += +selectedPrice;
+    totalSpent -= +selectedPrice;
+    spentValue.textContent = `Spent: $${totalSpent}`;
+    headerTotal.textContent = `Total: $${runningTotal}`;
+    clothing -= selectedPrice;
+    let clothingPercent = (clothing / +initialMoney.value) * 100;
+    clothingBar.style.height = `${clothingPercent * 3}px`;
+    e.target.remove();
+  } else if (e.target.classList.contains("bills-li")) {
+    const selectedPrice = e.target.getAttribute("data-price");
+    runningTotal += +selectedPrice;
+    totalSpent -= +selectedPrice;
+    spentValue.textContent = `Spent: $${totalSpent}`;
+    headerTotal.textContent = `Total: $${runningTotal}`;
+    bills -= selectedPrice;
+    let billsPercent = (bills / +initialMoney.value) * 100;
+    billsBar.style.height = `${billsPercent * 3}px`;
+    e.target.remove();
+  }
 });
 
 xButton.addEventListener("click", (e) => {
@@ -280,6 +352,5 @@ addMoneyPopup.addEventListener("submit", (e) => {
       totalBar.style.height = `${(runningTotal / 10) * 4}px`;
     })
   }
+  condescendingMessagefunction();
 })
-
-
