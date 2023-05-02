@@ -227,7 +227,7 @@ footer form button {
 footer button:hover {
   background-color: skyblue;
   transition: 0.5s;
-  padding: 25px;
+  scale: 1.1;
 }
 
 .pop-up {
@@ -404,7 +404,7 @@ label {
 }
 
 .add-money-popup form {
-  color: blue;
+  color: steelblue;
   font-size: 1.5em;
   font-weight: bold;
   display: none;
@@ -466,8 +466,17 @@ label {
   }
 
   .border {
-    width: 375px;
+    width: 90%;
     overflow: none;
+  }
+  .bars {
+    width: 90%;
+  }
+
+  .graph-container section:nth-child(2) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
 
